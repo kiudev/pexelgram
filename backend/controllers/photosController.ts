@@ -6,7 +6,7 @@ const API_KEY: string = process.env.PEXELGRAM_API_KEY || "";
 const client = createClient(API_KEY);
 
 export const searchPhotos = async (req: Request, res: Response) => {
-  const { query = "mountain" } = req.query;
+  const { query } = req.query;
 
   if (!query) {
     res.status(400).json({ error: "Query is required" });
