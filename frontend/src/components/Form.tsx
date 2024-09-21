@@ -1,27 +1,52 @@
-import { useContext } from "react";
+import { useContext, FormEvent } from "react";
+import { Search } from "lucide-react";
 
-import { SearchContext } from "../context/searchContext";
+import { SearchContext } from "../context/SearchContext";
 
-export default function Form() {
+interface FormProps {
+  onSearch?: (query: string) => void;
+}
+
+export default function Form({ onSearch }: FormProps) {
   const searchContext = useContext(SearchContext);
 
-  const { searchValue, handleSearchChange } = searchContext || {};
+  const { searchValue, handleSearchChange, photosRef } = searchContext || {};
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!searchValue) return;
+
+    onSearch?.(searchValue);
+
+    if (photosRef?.current) {
+      photosRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  };
 
   return (
-    <form className="w-full">
+    <form className="w-full" onSubmit={handleSubmit}>
       <h1 className="text-mixed-500 text-6xl">
         Search for <span className="brightness-150">beautiful images.</span>
       </h1>
-      <input
-        type="text"
-        placeholder="Search"
-        className="w-full bg-transparent px-10 py-3 text-2xl text-mixed-600 border-2 border-mixed-600 focus:outline-none"
-        value={searchValue}
-        onChange={handleSearchChange}
-      />
-      <button className="w-full bg-blue-100 text-mixed-600 text-xl">
-        Search
-      </button>
+
+      <div className="relative m-auto mt-5 [animation-timeline:scroll()] animate-resize">
+        <input
+          type="text"
+          placeholder="Search"
+          className="bg-transparent w-full px-10 py-3 text-2xl text-mixed-600 placeholder:text-mixed-600 border-2 border-mixed-600 focus:outline-none"
+          value={searchValue}
+          onChange={handleSearchChange}
+        />
+
+        <button className="bg-transparent text-mixed-600 text-xl absolute right-4 top-2">
+          <Search color="white" size={40} />
+        </button>
+      </div>
     </form>
   );
 }
