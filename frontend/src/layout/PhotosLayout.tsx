@@ -5,11 +5,13 @@ import Form from "../components/Form";
 
 // context
 import { SearchContext } from "../context/SearchContext";
-import Photos from "../components/Photos";
+import PhotoGallery from "../components/PhotoGallery";
 
 export default function PhotosLayout() {
   const [photos, setPhotos] = useState<any[]>([]);
   const searchContext = useContext(SearchContext);
+
+  const { setIsLoading } = searchContext || {};
 
   if (!searchContext) {
     throw new Error("SearchForm must be used within a SearchContextProvider");
@@ -31,7 +33,12 @@ export default function PhotosLayout() {
         }
       );
       const data = await response.json();
-      setPhotos(data.photos);
+      setIsLoading?.(true);
+
+      setTimeout(() => {
+        setPhotos(data.photos);
+        setIsLoading?.(false);
+      }, 5000);
     } catch (error) {
       console.error(error);
     }
@@ -44,7 +51,7 @@ export default function PhotosLayout() {
           <Form onSearch={searchPhotos} />
         </header>
       </main>
-      <Photos photos={photos} />
+      <PhotoGallery photos={photos} />
     </div>
   );
 }
