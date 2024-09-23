@@ -11,6 +11,8 @@ interface SearchContextType {
   searchValue: string;
   handleSearchChange: (e: ChangeEvent<HTMLInputElement>) => void;
   photosRef: RefObject<HTMLDivElement>;
+  isLoading: boolean;
+  setIsLoading: (isLoading: boolean) => void;
 }
 
 export const SearchContext = createContext<SearchContextType | undefined>(
@@ -24,6 +26,7 @@ export default function SearchContextProvider({
 }) {
   const [searchValue, setSearchValue] = useState<string>("");
   const photosRef = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -34,6 +37,8 @@ export default function SearchContextProvider({
     searchValue,
     handleSearchChange,
     photosRef,
+    isLoading,
+    setIsLoading,
   };
 
   return (
