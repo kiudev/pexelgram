@@ -1,4 +1,4 @@
-import { useContext, FormEvent } from "react";
+import { useContext, FormEvent, useEffect } from "react";
 import { Search } from "lucide-react";
 
 import { SearchContext } from "../context/SearchContext";
@@ -10,21 +10,31 @@ interface FormProps {
 export default function Form({ onSearch }: FormProps) {
   const searchContext = useContext(SearchContext);
 
-  const { searchValue, handleSearchChange, photosRef } = searchContext || {};
+  const {
+    searchValue,
+    handleSearchChange,
+    photosRef,
+  } = searchContext || {};
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!searchValue) return;
 
-    onSearch?.(searchValue);
+    if (searchValue) {
+      if (photosRef?.current) {
+        photosRef.current.className += " w-full min-h-screen";
+      }
 
-    if (photosRef?.current) {
-      photosRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center",
-      });
+      onSearch?.(searchValue);
+
+      if (photosRef?.current) {
+        photosRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      }
     }
   };
 
@@ -34,7 +44,9 @@ export default function Form({ onSearch }: FormProps) {
         Search for <span className="brightness-150">beautiful images.</span>
       </h1>
 
-      <div className="relative m-auto mt-5 [animation-timeline:scroll()] animate-resize">
+      <div
+        className="relative m-auto mt-5 [animation-timeline:scroll()] animate-resize"
+      >
         <input
           type="text"
           placeholder="Search"
