@@ -25,6 +25,20 @@ module.exports = {
         'mixed-500': '#717271',
         'mixed-600': '#8c8c8c',
       },
+      animation: {
+        'resize': 'resize linear both',
+        'fade-in': 'fade-in linear both',
+      },
+      keyframes: {
+        'resize': {
+          'to': {
+            'position': 'fixed',
+            'top': '0',
+            'background-color': '#131413',
+            'z-index': '1',
+          },
+        },
+      },
     },
   },
   plugins: [],
