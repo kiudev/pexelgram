@@ -11,8 +11,6 @@ export default function PhotosLayout() {
   const [photos, setPhotos] = useState<any[]>([]);
   const searchContext = useContext(SearchContext);
 
-  const { setIsLoading } = searchContext || {};
-
   if (!searchContext) {
     throw new Error("SearchForm must be used within a SearchContextProvider");
   }
@@ -24,7 +22,7 @@ export default function PhotosLayout() {
       }
 
       const response = await fetch(
-        `http://localhost:4000/api/photos/search?query=${query}`,
+        `http://localhost:4000/v1/photos/search?query=${query}`,
         {
           method: "GET",
           headers: {
@@ -33,12 +31,8 @@ export default function PhotosLayout() {
         }
       );
       const data = await response.json();
-      setIsLoading?.(true);
 
-      setTimeout(() => {
-        setPhotos(data.photos);
-        setIsLoading?.(false);
-      }, 5000);
+      setPhotos(data.photos);
     } catch (error) {
       console.error(error);
     }
