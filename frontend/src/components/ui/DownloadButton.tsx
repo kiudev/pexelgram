@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Download } from "lucide-react";
 
 interface DownloadButtonProps {
-  url: string;
-  fileName: string;
+  url: string | undefined;
+  fileName: string | undefined;
 }
 
 export default function DownloadButton({ url, fileName }: DownloadButtonProps) {
@@ -11,14 +11,14 @@ export default function DownloadButton({ url, fileName }: DownloadButtonProps) {
 
   const handleDownload = async () => {
     try {
-      const response = await fetch(url);
+      const response = await fetch(url as string);
 
       if (response.ok) {
         const blob = await response.blob();
         const downloadUrl = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = downloadUrl;
-        link.download = fileName;
+        link.download = fileName as string;
         document.body.appendChild(link);
         link.click();
         link.remove();
@@ -33,7 +33,7 @@ export default function DownloadButton({ url, fileName }: DownloadButtonProps) {
         onClick={handleDownload}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
-        className={`w-20 h-10 rounded-full absolute right-2 bottom-2 flex justify-center items-center transition-all ${
+        className={`w-10 h-10 rounded-full absolute right-2 bottom-2 flex justify-center items-center transition-all ${
           isHovering ? "bg-green-600" : "bg-green-200"
         }`}
       >
