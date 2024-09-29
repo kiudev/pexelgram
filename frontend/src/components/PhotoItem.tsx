@@ -1,4 +1,5 @@
-import DownloadButton from "./DownloadButton";
+
+import DownloadButton from "./ui/DownloadButton";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -14,7 +15,7 @@ function usePhotoContext() {
 }
 
 export default function PhotoItem({ photo }: any) {
-  const { handlePhotoClick } = usePhotoContext();
+  const { handlePhotoClick, selectedPhoto } = usePhotoContext();
 
   return (
     <div className="relative cursor-pointer" key={photo.id}>

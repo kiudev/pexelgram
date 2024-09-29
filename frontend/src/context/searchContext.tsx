@@ -6,12 +6,7 @@ import {
   useRef,
   RefObject,
 } from "react";
-
-interface SearchContextType {
-  searchValue: string;
-  handleSearchChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  photosRef: RefObject<HTMLDivElement>;
-}
+import { SearchContextType } from "../types";
 
 export const SearchContext = createContext<SearchContextType | null>(null);
 
@@ -20,6 +15,7 @@ export default function SearchContextProvider({
 }: {
   children: ReactNode;
 }) {
+  const [photos, setPhotos] = useState<any[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
   const photosRef = useRef<HTMLDivElement>(null);
 
@@ -28,10 +24,35 @@ export default function SearchContextProvider({
     setSearchValue(e.target.value);
   };
 
+  const searchPhotos = async (query: string) => {
+    try {
+      if (!query) {
+        return;
+      }
+
+      const response = await fetch(
+        `http://localhost:4000/v1/photos/search?query=${query}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+
+      setPhotos(data.photos);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const contextValues = {
     searchValue,
     handleSearchChange,
     photosRef,
+    photos,
+    searchPhotos,
   };
 
   return (

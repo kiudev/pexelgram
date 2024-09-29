@@ -1,20 +1,18 @@
-import { useContext, FormEvent, useEffect } from "react";
+import { useContext, FormEvent } from "react";
 import { Search } from "lucide-react";
-
+import { FormProps } from "../types";
 import { SearchContext } from "../context/SearchContext";
 
-interface FormProps {
-  onSearch?: (query: string) => void;
+function useSearchContext() {
+  const searchContext = useContext(SearchContext);
+  if (searchContext === null) {
+    throw new Error("useSearchContext must be used within a SearchProvider");
+  }
+  return searchContext;
 }
 
 export default function Form({ onSearch }: FormProps) {
-  const searchContext = useContext(SearchContext);
-
-  const {
-    searchValue,
-    handleSearchChange,
-    photosRef,
-  } = searchContext || {};
+  const { searchValue, handleSearchChange, photosRef } = useSearchContext();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,9 +42,7 @@ export default function Form({ onSearch }: FormProps) {
         Search for <span className="brightness-150">beautiful images.</span>
       </h1>
 
-      <div
-        className="relative m-auto mt-5 [animation-timeline:scroll()] animate-resize"
-      >
+      <div className="relative m-auto mt-5 [animation-timeline:scroll()] animate-resize">
         <input
           type="text"
           placeholder="Search"
