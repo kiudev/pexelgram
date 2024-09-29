@@ -17,7 +17,7 @@ export const searchPhotos = async (req: Request, res: Response) => {
     const response = await client.photos.search({
       query: query as string,
       page: 1,
-      per_page: 10,
+      per_page: 20,
     });
     res.status(200).json(response);
   } catch (error) {
