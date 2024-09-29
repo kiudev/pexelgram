@@ -1,19 +1,24 @@
 import "./App.css";
+import { useEffect } from "react";
 
 // layouts
-import PhotosLayout from "./layout/PhotosLayout";
+import MainLayout from "./layout/MainLayout";
 
 // context
 import SearchContextProvider from "./context/SearchContext";
-import PhotoProvider from "./context/PhotoContext";
+import PhotoContextProvider from "./context/PhotoContext";
 
 export default function App() {
+  useEffect(() => {
+    document.title = "Pexelgram";
+  }, [])
+
   return (
     <div className="min-w-screen min-h-screen bg-mixed-100 flex flex-col px-[15vw]">
       <SearchContextProvider>
-        <PhotoProvider>
-          <PhotosLayout />
-        </PhotoProvider>
+        <PhotoContextProvider>
+          <MainLayout />
+        </PhotoContextProvider>
       </SearchContextProvider>
     </div>
   );
