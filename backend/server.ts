@@ -24,7 +24,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/photos", photosRouter);
+app.use("/v1/photos", photosRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
