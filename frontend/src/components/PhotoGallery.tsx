@@ -1,7 +1,5 @@
-import { useRef, RefObject, useContext, useState } from "react";
+import { useContext } from "react";
 import { SearchContext } from "../context/SearchContext";
-import Skeleton from "react-loading-skeleton";
-import { Download } from "lucide-react";
 import PhotoItem from "./PhotoItem";
 
 interface Photo {
@@ -17,18 +15,22 @@ interface PhotosProps {
   photos: Photo[];
 }
 
-export default function PhotoGallery({ photos }: PhotosProps) {
+function useSearchContext() {
   const searchContext = useContext(SearchContext);
+  if (searchContext === null) {
+    throw new Error('useSearchContext must be used within a SearchProvider');
+  }
+  return searchContext;
+}
 
-  const { photosRef, isLoading } = searchContext || {};
+export default function PhotoGallery({ photos }: PhotosProps) {
+  const { photosRef } = useSearchContext();
 
   return (
-    <div className="columns-3 gap-3 m-auto" ref={photosRef}>
-      {!isLoading ? (
-        photos.map((item: Photo) => <PhotoItem photo={item} />)
-      ) : (
-        <p className="text-4xl text-red-500">Loading...</p>
-      )}
+    <div className="md:columns-2 lg:columns-3 gap-3 m-auto" ref={photosRef}>
+      {photos.map((photo: Photo) => (
+        <PhotoItem key={photo.id} photo={photo} />
+      ))}
     </div>
   );
 }
