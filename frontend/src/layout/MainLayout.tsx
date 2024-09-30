@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { useSearchContext, usePhotoContext } from "../context";
+import { useSearchContext, usePhotoContext } from "@/context";
 
-import Form from "../components/Form";
+import Form from "@/components/Form";
 import PhotosLayout from "./PhotosLayout";
 import SinglePhotoLayout from "./SinglePhotoLayout";
 

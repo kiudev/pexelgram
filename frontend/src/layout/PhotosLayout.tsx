@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { SearchContext } from "../context/SearchContext";
-import PhotoItem from "../components/PhotoItem";
-import { PhotoType } from "../types";
+import { SearchContext } from "@/context/SearchContext";
+import PhotoItem from "@/components/PhotoItem";
+import { PhotoType } from "@/types";
 
 function useSearchContext() {
   const searchContext = useContext(SearchContext);

@@ -2,11 +2,11 @@ import "./App.css";
 import { useEffect } from "react";
 
 // layouts
-import MainLayout from "./layout/MainLayout";
+import MainLayout from "@/layout/MainLayout";
 
 // context
-import SearchContextProvider from "./context/SearchContext";
-import PhotoContextProvider from "./context/PhotoContext";
+import SearchContextProvider from "@/context/SearchContext";
+import PhotoContextProvider from "@/context/PhotoContext";
 
 export default function App() {
   useEffect(() => {

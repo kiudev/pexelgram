@@ -1,7 +1,7 @@
 import { useContext, FormEvent } from "react";
 import { Search } from "lucide-react";
-import { FormProps } from "../types";
-import { SearchContext } from "../context/SearchContext";
+import { FormProps } from "@/types";
+import { SearchContext } from "@/context/SearchContext";
 
 function useSearchContext() {
   const searchContext = useContext(SearchContext);

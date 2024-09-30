@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useState } from "react";
-import { PhotoContextType } from "../types";
+import { PhotoContextType } from "@/types";
 
 export const PhotoContext = createContext<PhotoContextType | null>(null);
 
