@@ -7,7 +7,6 @@
     },
     { "src": "backend/server.js", "use": "@vercel/node" }
   ],
-  "routes": [
-    { "src": "/(.*)", "dest": "frontend/dist/$1" }
-  ]
+  "routes": [{ "src": "/(.*)", "dest": "frontend/dist/$1" }],
+  "buildCommand": "bun run build"
 }
