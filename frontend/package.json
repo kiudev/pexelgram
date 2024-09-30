@@ -1,11 +1,10 @@
 {
-  "proxy": "http://localhost:4000",
   "name": "pexelgram",
   "private": true,
   "version": "1.0.0",
   "scripts": {
     "dev": "rsbuild dev --open",
-    "build": "rsbuild build && cp -r public dist/",
+    "build": "rsbuild build",
     "preview": "rsbuild preview"
   },
   "dependencies": {
