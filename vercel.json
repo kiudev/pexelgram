@@ -1,5 +1,0 @@
-{
-  "buildCommand": "cd frontend && bun run build",
-  "outputDirectory": "frontend/dist",
-  "installCommand": " cd frontend && bun install"
-}
