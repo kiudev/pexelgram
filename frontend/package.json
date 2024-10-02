@@ -2,7 +2,6 @@
   "name": "pexelgram",
   "private": true,
   "version": "1.0.0",
-  "packageManager": "bun@1.1.29",
   "scripts": {
     "dev": "rsbuild dev --open",
     "build": "rsbuild build",
