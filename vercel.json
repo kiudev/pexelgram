@@ -6,14 +6,21 @@
       "use": "@vercel/node"
     },
     {
-      "src": "frontend/rsbuild.config.ts",
-      "use": "@rsbuild/core"
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
     }
   ],
   "routes": [
     {
+      "src": "/v1/(.*)",
+      "dest": "backend/server.ts"
+    },
+    {
       "src": "/(.*)",
-      "dest": "frontend/index.tsx"
+      "dest": "frontend/dist/$1"
     }
   ]
 }
