@@ -4,7 +4,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useContext } from "react";
-import { PhotoContext } from "@/context/PhotoContext";
+import { PhotoContext } from "../context/PhotoContext";
 
 function usePhotoContext() {
   const photoContext = useContext(PhotoContext);

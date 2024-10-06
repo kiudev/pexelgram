@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import { usePhotoContext } from "@/context";
+import { usePhotoContext } from "../context";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { X } from "lucide-react";
-import DownloadButton from "@/components/ui/DownloadButton";
+import DownloadButton from "../components/ui/DownloadButton";
 
 export default function SinglePhotoLayout() {
   const { selectedPhoto, setSelectedPhoto } = usePhotoContext();

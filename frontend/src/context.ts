@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { SearchContext } from "@/context/SearchContext";
-import { PhotoContext } from "@/context/PhotoContext";
+import { SearchContext } from "./context/SearchContext";
+import { PhotoContext } from "./context/PhotoContext";
 
 export function useSearchContext() {
   const searchContext = useContext(SearchContext);
