@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useState } from "react";
 import { PhotoContextType } from "../types";
 
-export const PhotoContext = createContext<PhotoContextType | null>(null);
+export const PhotoContext = createContext<PhotoContextType | undefined>(undefined);
 
 export function PhotoContextProvider({
   children,

@@ -1,7 +1,7 @@
 import { ChangeEvent, createContext, ReactNode, useState, useRef } from "react";
 import { SearchContextType } from "../types";
 
-export const SearchContext = createContext<SearchContextType | null>(null);
+export const SearchContext = createContext<SearchContextType | undefined>(undefined);
 
 export function SearchContextProvider({
   children,

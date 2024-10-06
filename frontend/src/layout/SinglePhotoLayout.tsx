@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, ChangeEvent } from "react";
-import { usePhotoContext } from "../context";
+import { usePhotoContext } from "../hooks/usePhotoContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { X } from "lucide-react";
 import DownloadButton from "../components/ui/DownloadButton";

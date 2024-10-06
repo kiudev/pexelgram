@@ -1,15 +1,6 @@
-import { useContext } from "react";
-import { SearchContext } from "../context/SearchContext";
 import PhotoItem from "../components/PhotoItem";
 import { PhotoType } from "../types";
-
-function useSearchContext() {
-  const searchContext = useContext(SearchContext);
-  if (searchContext === null) {
-    throw new Error("useSearchContext must be used within a SearchProvider");
-  }
-  return searchContext;
-}
+import { useSearchContext } from "../hooks/useSearchContext";
 
 export default function PhotosLayout() {
   const { photos, photosRef } = useSearchContext();

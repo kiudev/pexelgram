@@ -1,7 +1,7 @@
 import DownloadButton from "./ui/DownloadButton";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { PhotoType } from "../types";
-import { usePhotoContext } from "../context";
+import { usePhotoContext } from "../hooks/usePhotoContext";
 
 export default function PhotoItem({ photo }: { photo: PhotoType }) {
   const { handlePhotoClick } = usePhotoContext();

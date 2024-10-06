@@ -4,22 +4,7 @@ export interface SearchContextType {
   searchValue: string;
   handleSearchChange: (e: ChangeEvent<HTMLInputElement>) => void;
   photosRef: RefObject<HTMLDivElement>;
-  photos: {
-    id: number;
-    src: {
-      original: string;
-      large2x: string;
-      large: string;
-      medium: string;
-      small: string;
-      portrait: string;
-      landscape: string;
-      tiny: string;
-    };
-    alt: string;
-    width: number;
-    height: number;
-  }[] | null;
+  photos: PhotoType[] | null;
   searchPhotos: (query: string) => void;
 }
 
@@ -64,9 +49,17 @@ export interface PhotoType {
   id: number;
   src: {
     original: string;
+    large2x: string;
     large: string;
+    medium: string;
+    small: string;
+    portrait: string;
+    landscape: string;
+    tiny: string;
   };
   alt: string;
+  width: number;
+  height: number;
 }
 
 export interface FormProps {

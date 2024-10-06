@@ -1,4 +1,5 @@
-import { useSearchContext, usePhotoContext } from "../context";
+import { usePhotoContext } from "../hooks/usePhotoContext";
+import { useSearchContext } from "../hooks/useSearchContext";
 
 import Form from "../components/Form";
 import PhotosLayout from "./PhotosLayout";

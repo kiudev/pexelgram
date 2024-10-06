@@ -1,7 +1,7 @@
 import { FormEvent } from "react";
 import { Search } from "lucide-react";
 import { FormProps } from "../types";
-import { useSearchContext } from "../context";
+import { useSearchContext } from "../hooks/useSearchContext";
 
 export default function Form({ onSearch }: FormProps) {
   const { searchValue, handleSearchChange, photosRef } = useSearchContext();
