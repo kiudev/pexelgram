@@ -2,8 +2,8 @@
 import MainLayout from "./layout/MainLayout";
 
 // context
-import SearchContextProvider from "./context/SearchContext";
-import PhotoContextProvider from "./context/PhotoContext";
+import { SearchContextProvider } from "./context/SearchContext";
+import { PhotoContextProvider } from "./context/PhotoContext";
 
 export default function App() {
   return (

@@ -1,15 +1,7 @@
-import { useContext, FormEvent } from "react";
+import { FormEvent } from "react";
 import { Search } from "lucide-react";
 import { FormProps } from "../types";
-import { SearchContext } from "../context/SearchContext";
-
-function useSearchContext() {
-  const searchContext = useContext(SearchContext);
-  if (searchContext === null) {
-    throw new Error("useSearchContext must be used within a SearchProvider");
-  }
-  return searchContext;
-}
+import { useSearchContext } from "../context";
 
 export default function Form({ onSearch }: FormProps) {
   const { searchValue, handleSearchChange, photosRef } = useSearchContext();

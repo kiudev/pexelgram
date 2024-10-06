@@ -3,7 +3,7 @@ import { SearchContextType } from "../types";
 
 export const SearchContext = createContext<SearchContextType | null>(null);
 
-export default function SearchContextProvider({
+export function SearchContextProvider({
   children,
 }: {
   children: ReactNode;

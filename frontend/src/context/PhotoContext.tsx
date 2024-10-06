@@ -3,7 +3,7 @@ import { PhotoContextType } from "../types";
 
 export const PhotoContext = createContext<PhotoContextType | null>(null);
 
-export default function PhotoContextProvider({
+export function PhotoContextProvider({
   children,
 }: {
   children: ReactNode;
