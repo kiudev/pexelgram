@@ -1,21 +1,19 @@
-
 import DownloadButton from "./ui/DownloadButton";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import { useContext } from "react";
 import { PhotoContext } from "../context/PhotoContext";
+import { PhotoType } from "../types";
 
 function usePhotoContext() {
   const photoContext = useContext(PhotoContext);
   if (photoContext === null) {
-    throw new Error('usePhotoContext must be used within a PhotoProvider');
+    throw new Error("usePhotoContext must be used within a PhotoProvider");
   }
   return photoContext;
 }
 
-export default function PhotoItem({ photo }: any) {
-  const { handlePhotoClick, selectedPhoto } = usePhotoContext();
+export default function PhotoItem({ photo }: { photo: PhotoType }) {
+  const { handlePhotoClick } = usePhotoContext();
 
   return (
     <div className="relative cursor-pointer" key={photo.id}>

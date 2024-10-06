@@ -16,7 +16,7 @@ export default function PhotosLayout() {
 
   return (
     <div className="md:columns-2 lg:columns-3 gap-3 m-auto" ref={photosRef}>
-      {photos.map((photo: PhotoType) => (
+      {photos?.map((photo: PhotoType) => (
         <PhotoItem key={photo.id} photo={photo} />
       ))}
     </div>

@@ -1,11 +1,4 @@
-import {
-  ChangeEvent,
-  createContext,
-  ReactNode,
-  useState,
-  useRef,
-  RefObject,
-} from "react";
+import { ChangeEvent, createContext, ReactNode, useState, useRef } from "react";
 import { SearchContextType } from "../types";
 
 export const SearchContext = createContext<SearchContextType | null>(null);
@@ -15,7 +8,7 @@ export default function SearchContextProvider({
 }: {
   children: ReactNode;
 }) {
-  const [photos, setPhotos] = useState<any[]>([]);
+  const [photos, setPhotos] = useState<[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
   const photosRef = useRef<HTMLDivElement>(null);
 

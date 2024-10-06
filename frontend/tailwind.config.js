@@ -24,26 +24,24 @@ module.exports = {
         "mixed-600": "#8c8c8c",
       },
       animation: {
-        "resize": "resize linear both",
+        resize: "resize linear both",
         "fade-in": "fade-in 0.2s ease-in-out",
       },
       keyframes: {
-        "resize": {
-          "to": {
-            "position": "fixed",
-            "top": "0",
+        resize: {
+          to: {
+            position: "fixed",
+            top: "0",
             "background-color": "#131413",
             "z-index": "1",
           },
         },
         "fade-in": {
-          "from": {
+          from: {
             opacity: "0",
-            scale: "0.5",
           },
-          "to": {
+          to: {
             opacity: "1",
-            scale: "1",
           },
         },
       },

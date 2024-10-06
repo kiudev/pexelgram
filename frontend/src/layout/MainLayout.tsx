@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { useSearchContext, usePhotoContext } from "../context";
 
 import Form from "../components/Form";

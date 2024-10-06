@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, ChangeEvent } from "react";
 import { usePhotoContext } from "../context";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { X } from "lucide-react";
@@ -8,25 +8,21 @@ export default function SinglePhotoLayout() {
   const { selectedPhoto, setSelectedPhoto } = usePhotoContext();
   const dialogPhoto = useRef<HTMLDialogElement>(null);
   const [selectedSize, setSelectedSize] = useState<string>("original");
-  const [isVisible, setIsVisible] = useState<boolean>(true);
 
   const handleClick = () => {
     dialogPhoto.current?.close();
     setSelectedPhoto(null);
-    setIsVisible(false);
   };
 
-  const handleSizeChange = (e: any) => {
+  const handleSizeChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedSize(e.target.value);
   };
 
   useEffect(() => {
     if (selectedPhoto && dialogPhoto.current) {
       dialogPhoto.current.showModal();
-      setIsVisible(true);
     }
   }, [selectedPhoto]);
-  console.log(selectedSize);
 
   return (
     <dialog
